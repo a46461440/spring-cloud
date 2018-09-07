@@ -1,4 +1,14 @@
 server:
   port: 8081
-book:
-  name: webservice
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  application:
+    name: server-one
+eureka:
+  client:
+    service-url:
+      defaultZone: http://server1:11111/eureka
