@@ -1,5 +1,3 @@
-server:
-  port: 8081
 management:
   endpoints:
     web:
@@ -7,8 +5,20 @@ management:
         include: '*'
 spring:
   application:
-    name: server-one
+    name: hello-provider
 eureka:
   client:
     service-url:
-      defaultZone: http://server1:11111/eureka
+      defaultZone: http://server1:11111/eureka,http://server2:11112/eureka
+    #当自己注册进入注册中心的时候需要拉取注册中心的服务清单
+    fetch-registry: true
+    #多少秒拉取一次服务清单
+    registry-fetch-interval-seconds: 30
+    eureka-server-connect-timeout-seconds: 3
+    eureka-server-read-timeout-seconds: 3
+    cache-refresh-executor-thread-pool-size: 2
+    #是否偏好使用处于相同Zone的Eureka服务端
+    prefer-same-zone-eureka: true
+  instance:
+    # 3秒检查一次心跳 成功则续约
+    lease-renewal-interval-in-seconds: 3
