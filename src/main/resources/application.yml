@@ -5,7 +5,7 @@ management:
         include: '*'
 spring:
   application:
-    name: hello-provider
+    name: hello-provider2
 eureka:
   client:
     service-url:
@@ -19,6 +19,7 @@ eureka:
     cache-refresh-executor-thread-pool-size: 2
     #是否偏好使用处于相同Zone的Eureka服务端
     prefer-same-zone-eureka: true
+#    availability-zones: anotherZone
   instance:
     # 3秒检查一次心跳 成功则续约
     lease-renewal-interval-in-seconds: 3
